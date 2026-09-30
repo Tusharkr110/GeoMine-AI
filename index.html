@@ -847,6 +847,13 @@
     </div>
   </footer>
 
-  <script src="app.js?v=2.5"></script>
+  <!-- PDF.js client-side parser for high-performance multi-page PDF scanning & intelligence on static CDNs (e.g., Netlify) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+  <script>
+    if (window.pdfjsLib) {
+      window.pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+    }
+  </script>
+  <script src="app.js?v=2.7"></script>
 </body>
 </html>
