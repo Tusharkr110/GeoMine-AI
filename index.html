@@ -1,0 +1,852 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GeoMine AI Portal | Restricted Officer & Administrator Access</title>
+  <link rel="stylesheet" href="styles.css?v=2.6">
+  <link rel="icon" type="image/png" href="assets/geomine-logo.png">
+</head>
+<body>
+
+  <!-- Background Animated Grid Pattern -->
+  <div class="grid-bg-overlay"></div>
+
+  <!-- Government of India & Classification Header Bar -->
+  <header class="gov-top-bar">
+    <div class="gov-top-left">
+      <!-- Authentic Indian National Flag (Tiranga with Ashoka Chakra) -->
+      <svg class="indian-flag" width="24" height="16" viewBox="0 0 24 16" xmlns="http://www.w3.org/2000/svg" title="Flag of India">
+        <rect width="24" height="5.333" y="0" fill="#FF9933"/>
+        <rect width="24" height="5.333" y="5.333" fill="#FFFFFF"/>
+        <rect width="24" height="5.333" y="10.666" fill="#138808"/>
+        <g transform="translate(12, 8)">
+          <circle r="2.1" fill="none" stroke="#000080" stroke-width="0.5"/>
+          <circle r="0.45" fill="#000080"/>
+          <path d="M 0 0 L 0 -2.1 M 0 0 L 0 2.1 M 0 0 L -2.1 0 M 0 0 L 2.1 0 M 0 0 L -1.48 -1.48 M 0 0 L 1.48 1.48 M 0 0 L -1.48 1.48 M 0 0 L 1.48 -1.48 M 0 0 L -0.54 -2.03 M 0 0 L 0.54 2.03 M 0 0 L -2.03 -0.54 M 0 0 L 2.03 0.54 M 0 0 L -2.03 0.54 M 0 0 L 2.03 -0.54 M 0 0 L -0.54 2.03 M 0 0 L 0.54 -2.03 M 0 0 L -1.05 -1.82 M 0 0 L 1.05 1.82 M 0 0 L -1.82 -1.05 M 0 0 L 1.82 1.05 M 0 0 L -1.82 1.05 M 0 0 L 1.82 -1.05 M 0 0 L -1.05 1.82 M 0 0 L 1.05 -1.82" stroke="#000080" stroke-width="0.25"/>
+        </g>
+      </svg>
+      <span>भारत सरकार | GOVERNMENT OF INDIA • कोयला मंत्रालय | MINISTRY OF COAL</span>
+    </div>
+    <div class="gov-top-right">
+      <div class="sec-pill">
+        <span class="pulsing-dot"></span>
+        <span>LEVEL-4 RESTRICTED • INTRANET ONLY</span>
+      </div>
+      <button class="theme-toggle-btn" id="themeToggleBtn" title="Toggle Theme">
+        <svg id="themeIcon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="12" r="5"></circle>
+          <line x1="12" y1="1" x2="12" y2="3"></line>
+          <line x1="12" y1="21" x2="12" y2="23"></line>
+          <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+          <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+          <line x1="1" y1="12" x2="3" y2="12"></line>
+          <line x1="21" y1="12" x2="23" y2="12"></line>
+          <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+          <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+        </svg>
+        <span id="themeText">Light Mode</span>
+      </button>
+      <button type="button" class="topbar-logout-btn" id="topbarLogoutBtn" style="display: none;" title="Logout and terminate active session">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+          <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/>
+          <polyline points="16 17 21 12 16 7"/>
+          <line x1="21" y1="12" x2="9" y2="12"/>
+        </svg>
+        <span>Logout</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Institutional Branding Bar -->
+  <nav class="main-header">
+    <div class="brand-wrapper">
+      <div class="brand-logo-badge">
+        <img src="assets/geomine-logo.png" alt="GeoMine AI Logo" class="brand-logo-img">
+      </div>
+      <div class="brand-text">
+        <h2>जियोमाइन एआई | भू-वैज्ञानिक एवं खनन विश्लेषण प्रणाली</h2>
+        <h1>GEOMINE AI • ADVANCED GEOSPATIAL & MINE INTELLIGENCE</h1>
+        <div class="subtext">Ministry of Coal, Government of India • Real-Time AI Autonomous Mine Planning & Document Intelligence</div>
+      </div>
+    </div>
+    <div class="header-right-group" style="display: flex; align-items: center; gap: 12px;">
+      <div class="header-status-badge">
+        <svg class="badge-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+        </svg>
+        <div>
+          <div style="font-weight: 700; color: var(--text-primary);">NIC e-Gov SSL/TLS 1.3</div>
+          <div style="color: var(--text-muted); font-size: 0.7rem;">IP: 10.42.18.91 (Secure Node)</div>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Login Portal Container -->
+  <main class="portal-container" id="portalSection">
+    <div class="auth-card" id="authCard">
+      
+      <!-- Top Card Header -->
+      <div class="card-top">
+        <div class="auth-card-emblem">
+          <img src="assets/geomine-logo.png" alt="GeoMine AI Official Emblem" class="auth-card-logo">
+        </div>
+        <div class="portal-category-tag" id="portalCategoryTag">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+          </svg>
+          <span id="portalTagText">RESTRICTED OFFICER PORTAL</span>
+        </div>
+        <h3 id="portalHeading">GeoMine AI Officer Portal</h3>
+        <p id="portalSubtitle">Authorized Mine Planning, Geology & Environmental Officers Only</p>
+      </div>
+
+      <!-- Role Switcher Tabs (Officer vs Admin) -->
+      <div class="role-tabs-wrapper">
+        <div class="role-tabs" role="tablist">
+          <button type="button" class="role-tab-btn active" data-role="OFFICER" role="tab" aria-selected="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/>
+              <circle cx="9" cy="7" r="4"/>
+              <path d="M22 21v-2a4 4 0 0 0-3-3.87"/>
+              <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+            </svg>
+            GEOMINE OFFICER
+          </button>
+          <button type="button" class="role-tab-btn" data-role="ADMIN" role="tab" aria-selected="false">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+              <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+            </svg>
+            SYSTEM ADMIN
+          </button>
+        </div>
+      </div>
+
+      <!-- Authentication Method Sub-Tabs -->
+      <div class="auth-subtabs">
+        <button type="button" class="subtab-btn active" data-tab="credentials">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+            <polyline points="14 2 14 8 20 8"/>
+            <line x1="16" y1="13" x2="8" y2="13"/>
+            <line x1="16" y1="17" x2="8" y2="17"/>
+          </svg>
+          EIS & Password Clearance
+        </button>
+        <button type="button" class="subtab-btn" data-tab="biometric">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12 11c0 3.517-1.009 6.799-2.753 9.571m-3.44-2.04l.054-.09A13.916 13.916 0 008 11a4 4 0 118 0c0 1.017-.07 2.019-.203 3m-2.118 6.844A21.88 21.88 0 0015.171 17m3.839 1.132c.645-2.266.99-4.659.99-7.132A8 8 0 004 11m0 0a8 8 0 00.99 7.132"/>
+          </svg>
+          Smart Card / PKI FIDO2
+        </button>
+      </div>
+
+      <!-- Main Login Form (Credentials Method) -->
+      <form class="auth-form" id="credentialsForm" novalidate>
+        
+        <!-- Live Alert / Error Notification -->
+        <div class="alert-banner" id="alertBanner" role="alert">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="10"/>
+            <line x1="12" y1="8" x2="12" y2="12"/>
+            <line x1="12" y1="16" x2="12.01" y2="16"/>
+          </svg>
+          <div id="alertMessage">Security verification error.</div>
+        </div>
+
+        <!-- Identifier Input (EIS or Email) -->
+        <div class="form-group">
+          <div class="form-label-row">
+            <label class="form-label" id="identifierLabel" for="identifierInput">
+              Employee EIS No. / Official Email <span class="required">*</span>
+            </label>
+          </div>
+          <div class="input-wrapper">
+            <svg class="input-icon-left" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+              <circle cx="12" cy="7" r="4"/>
+            </svg>
+            <input 
+              type="text" 
+              class="form-input" 
+              id="identifierInput" 
+              placeholder="e.g. 90342118 or alok.verma@cmpdi.co.in" 
+              autocomplete="username" 
+              required
+            >
+          </div>
+          <div class="input-hint">8-digit Coal India EIS Number or @cmpdi.co.in email</div>
+        </div>
+
+        <!-- Regional Institute Selector (Officer Only) -->
+        <div class="form-group" id="instituteGroup">
+          <div class="form-label-row">
+            <label class="form-label" for="instituteSelect">
+              Regional Institute / Posting Station <span class="required">*</span>
+            </label>
+          </div>
+          <div class="input-wrapper">
+            <svg class="input-icon-left" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="4" y="2" width="16" height="20" rx="2" ry="2"/>
+              <line x1="9" y1="22" x2="9" y2="22.01"/>
+              <line x1="15" y1="22" x2="15" y2="22.01"/>
+              <line x1="12" y1="18" x2="12" y2="18.01"/>
+            </svg>
+            <select class="form-select" id="instituteSelect">
+              <option value="HQ_RANCHI">GeoMine AI Central HQ - Ranchi</option>
+              <option value="RI_1">RI-I - Asansol (West Bengal)</option>
+              <option value="RI_2">RI-II - Dhanbad (Jharkhand)</option>
+              <option value="RI_3" selected>RI-III - Ranchi (Jharkhand)</option>
+              <option value="RI_4">RI-IV - Nagpur (Maharashtra)</option>
+              <option value="RI_5">RI-V - Bilaspur (Chhattisgarh)</option>
+              <option value="RI_6">RI-VI - Singrauli (Madhya Pradesh)</option>
+              <option value="RI_7">RI-VII - Bhubaneswar (Odisha)</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Master Security Key (Admin Only) -->
+        <div class="form-group" id="adminKeyGroup" style="display: none;">
+          <div class="form-label-row">
+            <label class="form-label" for="adminKeyInput">
+              Root Security Authorization Token <span class="required">*</span>
+            </label>
+            <span style="font-size: 0.7rem; color: #ef4444; font-weight: 700;">TOP SECRET LEVEL 5</span>
+          </div>
+          <div class="input-wrapper">
+            <svg class="input-icon-left" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M21 2l-2 2m-1.5 1.5L16 7l-1.5-1.5"/>
+              <path d="M15 11l-3 3"/>
+              <circle cx="7.5" cy="16.5" r="4.5"/>
+            </svg>
+            <input 
+              type="password" 
+              class="form-input" 
+              id="adminKeyInput" 
+              placeholder="e.g. GEOMINE-ROOT-SEC-8829" 
+              autocomplete="off"
+            >
+          </div>
+          <div class="input-hint">Hardware-derived Master Key provided by CIL CISO Cell</div>
+        </div>
+
+        <!-- Password Input -->
+        <div class="form-group">
+          <div class="form-label-row">
+            <label class="form-label" for="passwordInput">
+              Passphrase / Password <span class="required">*</span>
+            </label>
+            <a href="#" class="forgot-link trigger-help-modal">Forgot Password?</a>
+          </div>
+          <div class="input-wrapper">
+            <svg class="input-icon-left" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+              <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+            </svg>
+            <input 
+              type="password" 
+              class="form-input" 
+              id="passwordInput" 
+              placeholder="••••••••••••" 
+              autocomplete="current-password" 
+              required
+            >
+            <button type="button" class="input-action-btn" id="togglePasswordBtn" title="Toggle password visibility">
+              <!-- Eye Open -->
+              <svg class="eye-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+                <circle cx="12" cy="12" r="3"/>
+              </svg>
+              <!-- Eye Off -->
+              <svg class="eye-off-icon" style="display: none;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"/>
+                <line x1="1" y1="1" x2="23" y2="23"/>
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- Security Captcha Verification -->
+        <div class="form-group">
+          <label class="form-label" for="captchaInput">
+            Visual Security Captcha <span class="required">*</span>
+          </label>
+          <div class="captcha-container">
+            <div class="captcha-canvas-box" title="Security Captcha Code">
+              <canvas id="captchaCanvas"></canvas>
+            </div>
+            <button type="button" class="captcha-refresh-btn" id="refreshCaptchaBtn" title="Reload New Captcha">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"/>
+              </svg>
+            </button>
+            <div class="input-wrapper" style="flex: 1.2;">
+              <input 
+                type="text" 
+                class="form-input" 
+                id="captchaInput" 
+                placeholder="Enter Code" 
+                maxlength="5" 
+                style="padding-left: 14px; text-transform: uppercase; font-family: var(--font-mono); font-weight: 700; letter-spacing: 2px;"
+                required
+              >
+            </div>
+          </div>
+        </div>
+
+        <!-- Options: Remember EIS, Reset & Help link -->
+        <div class="form-options">
+          <label class="checkbox-wrapper">
+            <input type="checkbox" id="rememberEisCheck">
+            <span>Save EIS on this secure terminal</span>
+          </label>
+          <div style="display: flex; gap: 14px; align-items: center;">
+            <button type="button" id="resetLoginFormBtn" style="background: none; border: none; color: var(--text-muted); cursor: pointer; font-size: 0.78rem;" title="Clear fields & reset">Clear / Reset</button>
+            <a href="#" class="forgot-link trigger-help-modal">IT Cell Support</a>
+          </div>
+        </div>
+
+        <!-- Submit Button -->
+        <button type="submit" class="submit-btn" id="submitBtn">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+            <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/>
+            <polyline points="10 17 15 12 10 7"/>
+            <line x1="15" y1="12" x2="3" y2="12"/>
+          </svg>
+          <span id="submitBtnText">Verify Officer Credentials</span>
+        </button>
+
+      </form>
+
+      <!-- Biometric / Smart Token Method Panel -->
+      <div class="biometric-panel" id="biometricPanel">
+        <h4 style="font-size: 1.1rem; margin-bottom: 6px;">CIL Smart Card & Biometric PKI</h4>
+        <p style="font-size: 0.8rem; color: var(--text-secondary); max-width: 380px; margin: 0 auto 16px;">
+          Insert your NIC e-Pramaan Token, CIL Officer Smart Card or tap the biometric fingerprint reader.
+        </p>
+
+        <div class="fingerprint-scanner" id="biometricScanner" onclick="simulateBiometricScan()" title="Click to Simulate Hardware Scan">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+            <path d="M12 11c0 3.517-1.009 6.799-2.753 9.571m-3.44-2.04l.054-.09A13.916 13.916 0 008 11a4 4 0 118 0c0 1.017-.07 2.019-.203 3m-2.118 6.844A21.88 21.88 0 0015.171 17m3.839 1.132c.645-2.266.99-4.659.99-7.132A8 8 0 004 11m0 0a8 8 0 00.99 7.132"/>
+          </svg>
+        </div>
+
+        <div id="biometricScanStatus" style="font-size: 0.82rem; font-weight: 600; color: var(--coal-gold); margin-bottom: 16px;">
+          Hardware Reader Ready. Click sensor above to scan.
+        </div>
+
+        <button type="button" class="preset-btn" onclick="simulateBiometricScan()" style="padding: 8px 18px;">
+          Simulate FIDO2 Smart Card Scan
+        </button>
+      </div>
+
+      <!-- Legal Disclaimer & Cybersecurity Warning -->
+      <div class="legal-notice">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/>
+          <line x1="12" y1="9" x2="12" y2="13"/>
+          <line x1="12" y1="17" x2="12.01" y2="17"/>
+        </svg>
+        <div>
+          <strong>WARNING - STRICTLY RESTRICTED ACCESS:</strong> Access to this system is restricted to verified GeoMine AI Officers and authorized System Administrators only. Unauthorized attempts or security bypass are punishable under Sections 43 & 66 of the Information Technology Act 2000 and the Indian Official Secrets Act. All IP transactions are cryptographically logged.
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- 2-Factor Authentication (OTP) Modal -->
+  <div class="modal-overlay" id="otpModal" role="dialog" aria-modal="true" aria-labelledby="otpTitle">
+    <div class="otp-modal-box">
+      <div class="otp-modal-header">
+        <div class="shield-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+            <polyline points="9 12 11 14 15 10"/>
+          </svg>
+        </div>
+        <h3 id="otpTitle" style="font-size: 1.25rem; font-weight: 800; color: var(--text-primary);">Two-Factor Authentication</h3>
+        <p style="font-size: 0.8rem; color: var(--text-secondary); margin-top: 4px;">
+          A 6-digit security code has been transmitted to your registered mobile <strong id="otpPhoneTarget" style="color: var(--coal-gold);">+91 94****4821</strong> and official email <span id="otpEmailTarget" style="color: #38bdf8;">al**@geomine.co.in</span>.
+        </p>
+        <button type="button" class="otp-modal-close" id="otpModalClose" title="Close Modal">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="18" y1="6" x2="6" y2="18"/>
+            <line x1="6" y1="6" x2="18" y2="18"/>
+          </svg>
+        </button>
+      </div>
+
+      <div class="otp-modal-body">
+        
+        <!-- Demo Helper Chip for Hackathon Presentation -->
+        <div class="demo-otp-chip" id="demoOtpDisplay" title="Click to Auto-fill this OTP">
+          <span>Demo Received OTP: <strong id="demoOtpValue">742918</strong></span>
+          <span style="text-decoration: underline; font-weight: 700;">Click to Auto-fill</span>
+        </div>
+
+        <!-- 6 Digit Input Boxes -->
+        <div class="otp-inputs-grid">
+          <input type="text" maxlength="1" class="otp-digit" inputmode="numeric" autocomplete="one-time-code">
+          <input type="text" maxlength="1" class="otp-digit" inputmode="numeric">
+          <input type="text" maxlength="1" class="otp-digit" inputmode="numeric">
+          <input type="text" maxlength="1" class="otp-digit" inputmode="numeric">
+          <input type="text" maxlength="1" class="otp-digit" inputmode="numeric">
+          <input type="text" maxlength="1" class="otp-digit" inputmode="numeric">
+        </div>
+
+        <div class="otp-timer-row">
+          <span id="otpTimerDisplay">Valid for 01:00</span>
+          <button type="button" class="resend-btn" id="resendOtpBtn" disabled>Resend Security Code</button>
+        </div>
+
+        <button type="button" class="submit-btn" id="verifyOtpBtn" disabled>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="20 6 9 17 4 12"/>
+          </svg>
+          Confirm Identity & Enter Portal
+        </button>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- Post-Login Landing Dashboard Screen -->
+  <section class="portal-container" id="dashboardSection" style="display: none;">
+    <div class="dashboard-screen active">
+      
+      <!-- Dashboard Header -->
+      <div class="dash-header">
+        <div class="dash-user-meta">
+          <div class="dash-avatar" id="dashAvatarInitial">V</div>
+          <div class="dash-user-info">
+            <h2 id="dashUserName">Dr. Alok K. Verma</h2>
+            <div class="dash-role-row">
+              <span class="badge-role" id="dashUserRole">VERIFIED GEOMINE OFFICER</span>
+              <span class="dash-designation" id="dashDesignation">Chief Geologist &amp; Remote Sensing In-Charge</span>
+            </div>
+          </div>
+        </div>
+        <div class="dash-actions">
+          <div class="dash-clearance-box">
+            <span class="clearance-label">CLEARANCE LEVEL</span>
+            <span class="clearance-val" id="dashClearance">LEVEL 3 - SENSITIVE MINE DATA</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Dashboard Body Content -->
+      <div class="dash-content">
+
+        <!-- Officer Info Grid -->
+        <div class="dash-stats-grid">
+          <div class="stat-card">
+            <div class="stat-card-title">Regional Institute</div>
+            <div class="stat-card-value" id="dashInstitute">RI-III Ranchi</div>
+            <div class="stat-card-sub"><span class="badge-pill badge-pill-blue">Active Station</span></div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-card-title">Division</div>
+            <div class="stat-card-value" id="dashDivision">Exploration &amp; AI Geological Survey</div>
+            <div class="stat-card-sub"><span class="badge-pill badge-pill-green">Authorized</span></div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-card-title">Active Session Token</div>
+            <div class="stat-card-value token-val" id="dashSessionToken">GEOMINE-SEC-AUTH-9821</div>
+            <div class="stat-card-sub" id="dashLastLogin">Last login: 29-Sep-2026</div>
+          </div>
+        </div>
+
+        <!-- AI Mine Planning Modules Status -->
+        <div class="modules-list-card">
+          <div class="modules-header">
+            <div class="modules-title">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color: var(--coal-gold);">
+                <polygon points="12 2 2 7 12 12 22 7 12 2"/>
+                <polyline points="2 17 12 22 22 17"/>
+                <polyline points="2 12 12 17 22 12"/>
+              </svg>
+              <span>GeoMine AI Autonomous Mining Engines</span>
+            </div>
+            <span class="badge-pill badge-pill-green"><span class="pulse-dot-mini green"></span> All Systems Nominal</span>
+          </div>
+
+          <div class="module-item">
+            <div class="module-meta">
+              <div class="module-name">Drone LiDAR 3D Coal Seam Volumetrics AI</div>
+              <div class="module-desc">Model: GeoNet-V4 • Real-time point-cloud contouring for Jharia &amp; Raniganj fields</div>
+            </div>
+            <span class="badge-pill badge-pill-green">99.4% Accuracy</span>
+          </div>
+
+          <div class="module-item">
+            <div class="module-meta">
+              <div class="module-name">Opencast Blast Fragmentation &amp; Overburden Predictor</div>
+              <div class="module-desc">Computer vision analysis for explosive charge optimization &amp; vibration mitigation</div>
+            </div>
+            <span class="badge-pill badge-pill-gold"><span class="pulse-dot-mini gold"></span> Model Running</span>
+          </div>
+
+          <div class="module-item">
+            <div class="module-meta">
+              <div class="module-name">Underground Toxic Gas &amp; Strata Telemetry AI</div>
+              <div class="module-desc">Methane (CH4) &amp; Carbon Monoxide (CO) early warning system (DGMS compliant)</div>
+            </div>
+            <span class="badge-pill badge-pill-green">Safe 0.02% CH4</span>
+          </div>
+
+          <div class="module-item">
+            <div class="module-meta">
+              <div class="module-name">Satellite Land Reclamation &amp; Afforestation Audit</div>
+              <div class="module-desc">Sentinel-2 &amp; Cartosat-3 NDVI multi-spectral vegetation indices</div>
+            </div>
+            <span class="badge-pill badge-pill-blue">Telemetry Synced</span>
+          </div>
+        </div>
+
+        <!-- Dashboard Footer Action Bar -->
+        <div class="dash-footer-bar">
+          <div class="dash-session-status">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color: var(--secure-green);"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            <span>Session Status: <strong>Authenticated &amp; Cryptographically Monitored</strong></span>
+          </div>
+          <button type="button" class="dash-launch-btn" id="dashFooterRagBtn">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+            <span>Launch Real-Time GeoMine AI RAG Studio</span>
+          </button>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- =========================================================================
+       GEOMINE AI REAL-TIME MULTI-PAGE PDF RAG & DOCUMENT INTELLIGENCE STUDIO
+       ========================================================================= -->
+  <section class="rag-studio-section" id="ragStudioSection" style="display: none;">
+    
+    <!-- Minimalist Studio Header Toolbar -->
+    <div class="rag-toolbar-card">
+      <div class="rag-toolbar-left">
+        <div class="rag-badge-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+            <polyline points="14 2 14 8 20 8"/>
+            <circle cx="12" cy="14" r="2.5" fill="currentColor"/>
+          </svg>
+        </div>
+        <div class="rag-title-area">
+          <h2>Document Intelligence &amp; Live OCR Studio</h2>
+          <p>Real-time multi-page mining report ingestion • Hybrid vector search • PostgreSQL 5433 verification</p>
+        </div>
+      </div>
+
+      <div class="rag-actions-group">
+        <!-- Hidden Real PDF File Input -->
+        <input type="file" id="pdfFileInput" accept=".pdf" style="display: none;">
+        
+        <button type="button" class="btn-minimal-primary" id="triggerUploadBtn" title="Upload any scanned or digital PDF">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+            <polyline points="17 8 12 3 7 8"/>
+            <line x1="12" y1="3" x2="12" y2="15"/>
+          </svg>
+          <span>Upload PDF</span>
+        </button>
+
+        <button type="button" class="btn-minimal-secondary" id="generateSamplePdfBtn" title="Compile and scan an authentic 3-page GeoMine feasibility report">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
+          </svg>
+          <span>Generate Sample Report</span>
+        </button>
+
+        <button type="button" class="btn-minimal-ghost" id="backToDashBtn" title="Return to Dashboard">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+          <span>Dashboard</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Live Real-Time Scanning Progress Banner -->
+    <div id="scanProgressBar" style="display: none;" class="scan-progress-box">
+      <div class="scan-progress-header">
+        <span class="scan-progress-title" id="scanStatusText">Scanning Multi-Page Document Stream...</span>
+        <span class="scan-progress-val" id="scanPercentText">75%</span>
+      </div>
+      <div class="scan-progress-track">
+        <div id="scanFillBar" class="scan-progress-bar" style="width: 75%;"></div>
+      </div>
+    </div>
+
+    <!-- Side-by-Side Split Workspace Layout -->
+    <div class="rag-split-grid">
+      
+      <!-- LEFT PANE: Minimalist Document Reader -->
+      <div class="rag-snapshot-card">
+        
+        <div class="snapshot-card-header">
+          <div class="doc-info-badge">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/></svg>
+            <span id="activeDocName" class="doc-filename">No document selected</span>
+            <span class="pill-badge" id="activeDocBadge">0 Pages</span>
+          </div>
+
+          <div class="page-nav-controls">
+            <button type="button" class="page-nav-btn" id="prevPageBtn" title="Previous Page" disabled>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+            </button>
+            <span class="page-indicator-text" id="pageIndicatorText">Page 1 of 1</span>
+            <button type="button" class="page-nav-btn" id="nextPageBtn" title="Next Page" disabled>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- Scrollable Document Viewport with Dynamic Height & Layout -->
+        <div class="snapshot-viewport" id="snapshotViewport">
+          <div class="page-paper-sheet" id="pagePaperSheet">
+            <div class="paper-sheet-header">
+              <h4 id="sheetDocTitle">DOCUMENT SNAPSHOT</h4>
+              <p id="sheetDocSubtitle">Live scanned text view with citation attribution</p>
+              <div class="sheet-tag" id="sheetPageTag">PAGE 1 OF 1</div>
+            </div>
+            
+            <div class="paper-sheet-body" id="pagePaperBody">
+              <div class="paper-empty-state">
+                <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                  <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                  <polyline points="14 2 14 8 20 8"/>
+                  <line x1="12" y1="18" x2="12" y2="12"/>
+                  <line x1="9" y1="15" x2="15" y2="15"/>
+                </svg>
+                <h3>Awaiting Mining PDF Document</h3>
+                <p>Upload any scanned or digital PDF above to parse pages in real time and inspect source citations.</p>
+              </div>
+            </div>
+
+            <div class="paper-sheet-footer" id="sheetFooterStats">
+              <span id="sheetCharCount">0 characters rendered</span>
+              <span class="sheet-sync-pill">Real-time Stream</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- RIGHT PANE: Extracted Key Details & Human Review Console -->
+      <div class="rag-console-card">
+        
+        <div class="console-card-header">
+          <div class="console-header-title">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+            <span>Extracted Key Details</span>
+          </div>
+          <span class="pill-badge-live">Live Scan • PostgreSQL 5433</span>
+        </div>
+
+        <div class="console-tab-content active" id="detailsTabContent">
+          
+          <div class="entities-grid" id="entitiesGrid">
+            
+            <!-- 1. Production Card -->
+            <div class="entity-card">
+              <div class="entity-card-top">
+                <span class="entity-label">Production Target</span>
+                <span class="entity-conf-pill" id="confBadgeProduction">—</span>
+              </div>
+              <input type="text" class="entity-value-input" id="valProduction" placeholder="Not detected in document">
+              <div class="entity-card-bottom">
+                <span class="entity-snippet" id="citeSnippetProduction">Awaiting document scan...</span>
+                <button type="button" class="entity-jump-link" id="jumpBtnProduction" style="display: none;">Page 1 ↗</button>
+              </div>
+            </div>
+
+            <!-- 2. Reviewer Card -->
+            <div class="entity-card">
+              <div class="entity-card-top">
+                <span class="entity-label">Reviewing Officer</span>
+                <span class="entity-conf-pill" id="confBadgeReviewer">—</span>
+              </div>
+              <input type="text" class="entity-value-input" id="valReviewer" placeholder="Not detected in document">
+              <div class="entity-card-bottom">
+                <span class="entity-snippet" id="citeSnippetReviewer">Awaiting document scan...</span>
+                <button type="button" class="entity-jump-link" id="jumpBtnReviewer" style="display: none;">Page 1 ↗</button>
+              </div>
+            </div>
+
+            <!-- 3. Author Card -->
+            <div class="entity-card">
+              <div class="entity-card-top">
+                <span class="entity-label">Author / Mine Planner</span>
+                <span class="entity-conf-pill" id="confBadgeAuthor">—</span>
+              </div>
+              <input type="text" class="entity-value-input" id="valAuthor" placeholder="Not detected in document">
+              <div class="entity-card-bottom">
+                <span class="entity-snippet" id="citeSnippetAuthor">Awaiting document scan...</span>
+                <button type="button" class="entity-jump-link" id="jumpBtnAuthor" style="display: none;">Page 1 ↗</button>
+              </div>
+            </div>
+
+            <!-- 4. Date Card -->
+            <div class="entity-card">
+              <div class="entity-card-top">
+                <span class="entity-label">Report Date</span>
+                <span class="entity-conf-pill" id="confBadgeDate">—</span>
+              </div>
+              <input type="text" class="entity-value-input" id="valDate" placeholder="Not detected in document">
+              <div class="entity-card-bottom">
+                <span class="entity-snippet" id="citeSnippetDate">Awaiting document scan...</span>
+                <button type="button" class="entity-jump-link" id="jumpBtnDate" style="display: none;">Page 1 ↗</button>
+              </div>
+            </div>
+
+            <!-- 5. Mine Site Card -->
+            <div class="entity-card">
+              <div class="entity-card-top">
+                <span class="entity-label">Project &amp; Mine Site</span>
+                <span class="entity-conf-pill" id="confBadgeSite">—</span>
+              </div>
+              <input type="text" class="entity-value-input" id="valSite" placeholder="Not detected in document">
+              <div class="entity-card-bottom">
+                <span class="entity-snippet" id="citeSnippetSite">Awaiting document scan...</span>
+                <button type="button" class="entity-jump-link" id="jumpBtnSite" style="display: none;">Page 1 ↗</button>
+              </div>
+            </div>
+
+            <!-- 6. Location Card -->
+            <div class="entity-card">
+              <div class="entity-card-top">
+                <span class="entity-label">Location &amp; District</span>
+                <span class="entity-conf-pill" id="confBadgeLocation">—</span>
+              </div>
+              <input type="text" class="entity-value-input" id="valLocation" placeholder="Not detected in document">
+              <div class="entity-card-bottom">
+                <span class="entity-snippet" id="citeSnippetLocation">Awaiting document scan...</span>
+                <button type="button" class="entity-jump-link" id="jumpBtnLocation" style="display: none;">Page 1 ↗</button>
+              </div>
+            </div>
+
+            <!-- 7. Coal Grade Card -->
+            <div class="entity-card">
+              <div class="entity-card-top">
+                <span class="entity-label">Coal Seam Grade</span>
+                <span class="entity-conf-pill" id="confBadgeCoalGrade">—</span>
+              </div>
+              <input type="text" class="entity-value-input" id="valCoalGrade" placeholder="Not detected in document">
+              <div class="entity-card-bottom">
+                <span class="entity-snippet" id="citeSnippetCoalGrade">Awaiting document scan...</span>
+                <button type="button" class="entity-jump-link" id="jumpBtnCoalGrade" style="display: none;">Page 1 ↗</button>
+              </div>
+            </div>
+
+            <!-- 8. Stripping Ratio Card -->
+            <div class="entity-card">
+              <div class="entity-card-top">
+                <span class="entity-label">Stripping Ratio (SR)</span>
+                <span class="entity-conf-pill" id="confBadgeStripping">—</span>
+              </div>
+              <input type="text" class="entity-value-input" id="valStripping" placeholder="Not detected in document">
+              <div class="entity-card-bottom">
+                <span class="entity-snippet" id="citeSnippetStripping">Awaiting document scan...</span>
+                <button type="button" class="entity-jump-link" id="jumpBtnStripping" style="display: none;">Page 1 ↗</button>
+              </div>
+            </div>
+
+            <!-- 9. Overburden Removal Card -->
+            <div class="entity-card">
+              <div class="entity-card-top">
+                <span class="entity-label">Overburden (OBR)</span>
+                <span class="entity-conf-pill" id="confBadgeOverburden">—</span>
+              </div>
+              <input type="text" class="entity-value-input" id="valOverburden" placeholder="Not detected in document">
+              <div class="entity-card-bottom">
+                <span class="entity-snippet" id="citeSnippetOverburden">Awaiting document scan...</span>
+                <button type="button" class="entity-jump-link" id="jumpBtnOverburden" style="display: none;">Page 1 ↗</button>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Minimalist Human-in-the-Loop Review Status Card -->
+          <div class="human-review-card">
+            <div class="review-status-col">
+              <div class="review-status-row">
+                <span class="review-pulse-dot" id="reviewPulseDot"></span>
+                <span class="review-status-label" id="humanReviewStatusLabel">Pending Human Review</span>
+              </div>
+              <div class="review-officer-line">
+                Officer: <span id="currentReviewOfficer">Dr. Alok K. Verma (EIS: 90342118)</span> • <span class="review-db-indicator">PostgreSQL 5433</span>
+              </div>
+            </div>
+
+            <button type="button" class="verify-action-btn" id="verifyReviewBtn">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>Verify &amp; Save to Database</span>
+            </button>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- Help & Support Desk Modal -->
+  <div class="modal-overlay" id="helpModal" role="dialog" aria-modal="true">
+    <div class="help-modal-box">
+      <h4>
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color: var(--coal-gold);">
+          <circle cx="12" cy="12" r="10"/>
+          <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/>
+          <line x1="12" y1="17" x2="12.01" y2="17"/>
+        </svg>
+        CMPDI IT Support & Clearance Helpdesk
+      </h4>
+      <p style="font-size: 0.8rem; color: var(--text-secondary); margin-bottom: 14px;">
+        For EIS identity recovery, security token reactivation, or Regional Institute clearance, contact the official CMPDI IT cell:
+      </p>
+
+      <div class="help-contact-item">
+        <strong>GeoMine AI Headquarters & IT Division</strong><br>
+        Gondwana Place, Kanke Road, Ranchi - 834008, Jharkhand<br>
+        Phone: 0651-2231850 / 2231851 | Extn: 4421 / 4428
+      </div>
+
+      <div class="help-contact-item">
+        <strong>Nodal Information Security Officer (CISO Cell)</strong><br>
+        Email: ciso.admin@geomine.co.in / itcell@geomine.co.in<br>
+        Emergency Cyber Incident Response: 1800-345-GEOMINE (Toll-Free)
+      </div>
+
+      <button type="button" class="preset-btn" id="helpModalClose" style="width: 100%; justify-content: center; margin-top: 10px; padding: 10px;">
+        Close Support Window
+      </button>
+    </div>
+  </div>
+
+  <!-- Official Footer -->
+  <footer class="gov-footer">
+    <div class="footer-inner">
+      <div>
+        <strong>GeoMine AI • Autonomous Mine Intelligence System</strong><br>
+        Ministry of Coal, Government of India.<br>
+        CIN: U14292JH1975GOI001223 • All Rights Reserved.
+      </div>
+      <div class="footer-links">
+        <a href="#" class="trigger-help-modal">Cyber Security Guidelines</a>
+        <a href="#" class="trigger-help-modal">IT Act Compliance</a>
+        <a href="#" class="trigger-help-modal">NIC VPN Portal</a>
+        <a href="#" class="trigger-help-modal">Helpdesk</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="app.js?v=2.5"></script>
+</body>
+</html>

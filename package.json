@@ -1,0 +1,31 @@
+{
+  "name": "cmpdi-ai-officer-admin-portal",
+  "version": "1.0.0",
+  "description": "CMPDI (Coal India Ltd) AI-Based System - Restricted Officer & Admin Authentication Portal",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "rag": "python rag_service.py",
+    "dev": "node --watch server.js",
+    "setup-db": "node setup-db.js"
+  },
+  "keywords": [
+    "cmpdi",
+    "coal-india",
+    "mine-planning",
+    "sih",
+    "officer-portal",
+    "admin-login",
+    "security"
+  ],
+  "author": "CMPDI AI SIH Development Team",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^18.0.4",
+    "express": "^4.19.2",
+    "multer": "^2.4.0",
+    "pdf-parse": "^2.4.5",
+    "pg": "^8.23.0"
+  }
+}
