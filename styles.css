@@ -377,6 +377,150 @@ body {
   border-color: var(--alert-red);
 }
 
+/* Quick Access / Auto-Fill Presets in Login Card */
+.officer-quick-access-panel {
+  margin-top: 20px;
+  padding-top: 16px;
+  border-top: 1px dashed var(--border-color);
+}
+
+.quick-access-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.quick-access-line {
+  flex: 1;
+  height: 1px;
+  background: var(--border-color);
+}
+
+.quick-access-title {
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.8px;
+  color: var(--text-muted);
+  text-transform: uppercase;
+}
+
+.officer-cards-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
+}
+
+@media (min-width: 480px) {
+  .officer-cards-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.officer-preset-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md, 8px);
+  padding: 10px 12px;
+  gap: 8px;
+  transition: all 0.2s ease;
+}
+
+.officer-preset-card:hover {
+  border-color: rgba(59, 130, 246, 0.4);
+  background: rgba(59, 130, 246, 0.04);
+}
+
+.officer-preset-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.officer-avatar-sm {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  background: linear-gradient(135deg, #1e3a8a, #2563eb);
+  color: #ffffff;
+  font-size: 0.72rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  box-shadow: 0 2px 6px rgba(37, 99, 235, 0.25);
+}
+
+.officer-meta {
+  overflow: hidden;
+}
+
+.officer-name {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.officer-role {
+  font-size: 0.68rem;
+  color: var(--text-secondary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.officer-actions {
+  display: flex;
+  gap: 6px;
+  margin-top: 2px;
+}
+
+.preset-action-btn {
+  flex: 1;
+  padding: 5px 8px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.preset-action-btn.fill-btn {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border-color);
+  color: var(--text-secondary);
+}
+
+.preset-action-btn.fill-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--text-primary);
+  border-color: var(--text-muted);
+}
+
+.preset-action-btn.direct-btn {
+  background: rgba(37, 99, 235, 0.15);
+  border: 1px solid rgba(37, 99, 235, 0.4);
+  color: #60a5fa;
+}
+
+.preset-action-btn.direct-btn:hover {
+  background: #2563eb;
+  border-color: #2563eb;
+  color: #ffffff;
+  box-shadow: 0 2px 8px rgba(37, 99, 235, 0.35);
+}
+
 /* Main Container */
 .portal-container {
   position: relative;

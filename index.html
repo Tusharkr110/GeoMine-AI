@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>GeoMine AI Portal | Restricted Officer & Administrator Access</title>
-  <link rel="stylesheet" href="styles.css?v=2.6">
+  <link rel="stylesheet" href="styles.css?v=2.7">
   <link rel="icon" type="image/png" href="assets/geomine-logo.png">
 </head>
 <body>
@@ -340,6 +340,55 @@
         <button type="button" class="preset-btn" onclick="simulateBiometricScan()" style="padding: 8px 18px;">
           Simulate FIDO2 Smart Card Scan
         </button>
+      </div>
+
+      <!-- Officer Quick Access & Auto-Fill Panel -->
+      <div class="officer-quick-access-panel">
+        <div class="quick-access-header">
+          <span class="quick-access-line"></span>
+          <span class="quick-access-title">⚡ Auto-Fill &amp; Direct Access</span>
+          <span class="quick-access-line"></span>
+        </div>
+
+        <div class="officer-cards-grid">
+          <!-- Officer 1 Card -->
+          <div class="officer-preset-card">
+            <div class="officer-preset-info">
+              <div class="officer-avatar-sm">AV</div>
+              <div class="officer-meta">
+                <div class="officer-name">Dr. Alok K. Verma</div>
+                <div class="officer-role">EIS: 90342118 • Chief Geologist (RI-III)</div>
+              </div>
+            </div>
+            <div class="officer-actions">
+              <button type="button" class="preset-action-btn fill-btn" onclick="fillPreset('officer1')" title="Auto-fill credentials & captcha into form">
+                Auto-Fill
+              </button>
+              <button type="button" class="preset-action-btn direct-btn" onclick="directAccessOfficer('officer1')" title="Directly access GeoMine AI as Dr. Alok Verma">
+                Direct Access ↗
+              </button>
+            </div>
+          </div>
+
+          <!-- Officer 2 Card -->
+          <div class="officer-preset-card">
+            <div class="officer-preset-info">
+              <div class="officer-avatar-sm">SR</div>
+              <div class="officer-meta">
+                <div class="officer-name">Er. Sunita Rao</div>
+                <div class="officer-role">EIS: 90287415 • Mine Planner (RI-V)</div>
+              </div>
+            </div>
+            <div class="officer-actions">
+              <button type="button" class="preset-action-btn fill-btn" onclick="fillPreset('officer2')" title="Auto-fill credentials & captcha into form">
+                Auto-Fill
+              </button>
+              <button type="button" class="preset-action-btn direct-btn" onclick="directAccessOfficer('officer2')" title="Directly access GeoMine AI as Er. Sunita Rao">
+                Direct Access ↗
+              </button>
+            </div>
+          </div>
+        </div>
       </div>
 
       <!-- Legal Disclaimer & Cybersecurity Warning -->
@@ -854,6 +903,6 @@
       window.pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
     }
   </script>
-  <script src="app.js?v=2.8"></script>
+  <script src="app.js?v=2.9"></script>
 </body>
 </html>

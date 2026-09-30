@@ -302,6 +302,16 @@
     showAlert(`Preset Loaded: [${account.name} - ${account.designation}]. Ready to Authenticate.`, 'success');
   };
 
+  window.directAccessOfficer = function (presetKey) {
+    const account = MOCK_ACCOUNTS[presetKey];
+    if (!account) return;
+    window.fillPreset(presetKey);
+    showAlert(`Direct Access Authorized: Launching GeoMine AI for ${account.name}...`, 'success');
+    setTimeout(() => {
+      launchDashboard(account, "GEOMINE-DIRECT-TOKEN-" + Date.now());
+    }, 250);
+  };
+
   // --- 7. PRIMARY AUTHENTICATION SUBMISSION ---
   async function handleLoginSubmit(e) {
     e.preventDefault();
